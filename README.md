@@ -44,8 +44,8 @@ Features:
 
 ### TO DO:
 #### Specifics to be added as the project goes along
-[] - Finalize User Stories
-[] - Session and Authentication
-[] - Modeling
-[] - Views
-[] - Controllers
+- [] Finalize User Stories
+- [] Session and Authentication
+- [] Modeling
+- [] Views
+- [] Controllers
