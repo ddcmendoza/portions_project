@@ -12,7 +12,7 @@
     <%= form.label :price %>
     <%= form.number_field :price, step: 0.1, class: 'form-control' %> 
     <small>
-      <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %>
+      <%= link_to "Remove", "#", method: :delete, data: { action: "click->nested-form#remove_association", confirm: "Are you sure?" } %>
     </small>
   </div>
 </div>

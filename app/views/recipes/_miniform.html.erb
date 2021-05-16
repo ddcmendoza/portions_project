@@ -1,0 +1,13 @@
+<div data-controller="nested-form">
+  <template data-nested-form-target='template'>
+    <%= form.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
+      <%= render 'ingredients_fields', form: ingredient%>
+    <% end %>
+  </template>
+  <%= form.fields_for :ingredients do |ingredient| %>
+    <%= render 'ingredients_fields', form: ingredient %>
+  <% end %>
+  <div data-nested-form-target="add_item">
+    <%= link_to "Add Ingredient", "#", data: { action: "nested-form#add_association" } %>
+  </div>
+</div>

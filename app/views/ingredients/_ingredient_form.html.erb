@@ -32,3 +32,27 @@
   <%= f.submit 'Create' %>
 <%end%>
 =end %>
+
+
+
+<%
+=begin
+<p id="notice"><%= notice %></p>
+<%= @recipe.name %> </br>
+<%= @recipe.description %> </br>
+<%= "Category: #{@recipe.recipe_category.name}" %> </br>
+<% @recipe.ingredients.each do |ingredient| %>
+<div class='card p-1 m-1'>
+    <%= ingredient.name %> </br>
+    <%= ingredient.brand %> </br>
+    <%= "#{ingredient.measurement_value} #{ingredient.measurement}" %> </br>
+    <%= number_to_currency ingredient.price %> </br>
+    
+</div>
+
+<% end %>
+<%#= render 'form', recipe: @recipe %>
+
+<%= link_to 'Back', recipes_path %>
+=end
+%>

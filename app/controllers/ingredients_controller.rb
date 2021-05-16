@@ -11,8 +11,7 @@ class IngredientsController < ApplicationController
 
   def create; end
 
-  def ingredient_form
-    @ingredient =  Ingredient.new
-    render layout: false
+  def destroy
+    Ingredient.destroy(params[:id])
   end
 end

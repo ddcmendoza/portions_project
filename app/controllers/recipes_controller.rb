@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :set_recipe, only: %i[show edit destroy recipe_remove_ingredient]
   def index
     @recipe_categories = RecipeCategory.where(user_id: current_user.id)
   end
@@ -20,10 +20,11 @@ class RecipesController < ApplicationController
   def edit; end
 
   def update
+    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipes_path
     else
-      render :edit
+      redirect_to recipe_path(params[:id])
     end
   end
 
@@ -31,13 +32,18 @@ class RecipesController < ApplicationController
 
   def destroy; end
 
+  def recipe_remove_ingredient
+    @recipe.ingredients.delete(Ingredient.find(params[:ing_id]))
+    redirect_to recipe_path(params[:id])
+  end
+
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id]) if params[:action] != 'destroy'
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :recipe_category_id, ingredients_attributes: %i[_destroy name brand measurement measurement_value price])
+    params.require(:recipe).permit(:name, :id, :description, :recipe_category_id, ingredients_attributes: %i[_destroy name brand measurement measurement_value price id])
   end
 end

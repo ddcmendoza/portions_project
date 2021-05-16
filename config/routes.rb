@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-  get 'ingredients/index'
-  get 'ingredients/show'
-  get 'ingredients/edit'
-  patch 'ingredients/update'
-  get 'ingredients/new'
-  post 'ingredients/create'
-  
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :recipes
+  resources :ingredients
+  delete '/recipes/:id/ingredient/:ing_id', to: "recipes#recipe_remove_ingredient", as: 'recipe_remove_ingredient'
   root "home#index"
 end
