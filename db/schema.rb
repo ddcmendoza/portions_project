@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_142720) do
+ActiveRecord::Schema.define(version: 2021_05_16_052823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_05_11_142720) do
     t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "specification"
   end
 
   create_table "ingredients_recipes", force: :cascade do |t|
@@ -38,6 +39,8 @@ ActiveRecord::Schema.define(version: 2021_05_11_142720) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_recipe_categories_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -45,6 +48,9 @@ ActiveRecord::Schema.define(version: 2021_05_11_142720) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "recipe_category_id"
+    t.bigint "parent_id"
+    t.index ["recipe_category_id"], name: "index_recipes_on_recipe_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +65,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_142720) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "recipe_categories", "users"
+  add_foreign_key "recipes", "recipe_categories"
 end

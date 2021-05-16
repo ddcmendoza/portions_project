@@ -1,3 +1,6 @@
 class Ingredient < ApplicationRecord
-    has_and_belongs_to_many :recipes, join_table: "ingredients_recipes"
+  has_and_belongs_to_many :recipes, join_table: 'ingredients_recipes'
+
+  validates :name, presence: true
+  validates :measurement, presence: true
 end

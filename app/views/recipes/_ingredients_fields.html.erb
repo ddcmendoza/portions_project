@@ -1,0 +1,18 @@
+<div class='nested-fields'>
+  <div class='form-group card p-1 m-1'>
+    <%= form.hidden_field :_destroy %>
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: 'Name', class: 'form-control' %>
+    <%= form.label :brand %>
+    <%= form.text_field :brand, placeholder: 'Optional', class: 'form-control' %>
+    <%= form.label :measurement %>
+    <%= form.text_field :measurement, placeholder: 'e.g. grams, pieces,', class: 'form-control' %>  
+    <%= form.label :measurement_value %>
+    <%= form.number_field :measurement_value, step: 0.1, class: 'form-control' %> 
+    <%= form.label :price %>
+    <%= form.number_field :price, step: 0.1, class: 'form-control' %> 
+    <small>
+      <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %>
+    </small>
+  </div>
+</div>

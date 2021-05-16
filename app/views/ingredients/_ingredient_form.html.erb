@@ -1,0 +1,34 @@
+<% form_with model: @ingredient %>
+<% end %>
+
+<%
+=begin 
+  <%= form_with model: @recipe, method: :post, url: recipes_path do |f|%>
+  <div class="container mt-1">
+    <%= f.label :recipe_category %>
+    <%= f.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false}%>
+  </div>
+  <div class="container mt-1">
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+  </div>
+  <div class="container mt-1">
+    <%= f.label :description %>
+    <%= f.text_area :description%>
+  </div>
+  <div data-controller="ingredients">
+    <%= f.label :ingredients %>
+    <div class='container mt-1' data-ingredients-target='container'>
+      <button data-action="click->ingredients#add">
+        <span class="iconify" data-icon="codicon:add" data-inline="false" >
+        </span>
+      </button>
+    </div>
+    <div data-action="click->ingredients#remove">
+      <span class="iconify" data-icon="el:remove" data-inline="false" >
+      </span>
+    </div>
+  </div>
+  <%= f.submit 'Create' %>
+<%end%>
+=end %>

@@ -1,0 +1,20 @@
+<ul>
+  <% @recipe_categories.each do |category| %>
+    <li>
+      <%= category.name %>
+      <ul>
+        <% recipes = Recipe.where(recipe_category_id: category.id)%>
+        <% recipes.each do |recipe| %>
+          <li>
+          <%= link_to recipe_path(recipe) do%>
+            <%= recipe.name%>
+            <%end%>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+<%= link_to new_recipe_path do %>
+  <button type="button" class="btn btn-info mt-1">Create new Recipe</button>
+<% end %>

@@ -11,3 +11,7 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+// console.log('Hello World from Webpacker')
+
+import "controllers"
+
