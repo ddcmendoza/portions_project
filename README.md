@@ -33,6 +33,8 @@ This app is created by Dave Mendoza.
 
 # Portions.
 
+Read more [here]('./Project_Details.pdf')
+
 Features:
 
 * Create and Save your favorite recipes!
