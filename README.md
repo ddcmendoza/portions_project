@@ -28,8 +28,7 @@
 
 ## About the app
 
-This app is created by Dave Mendoza. 
-* [LinkedIn](https://www.linkedin.com/in/ddcmendoza/)
+This app is created by [Dave](https://www.linkedin.com/in/ddcmendoza/) and [Imman](https://github.com/immanuelMM). 
 
 # Portions.
 
