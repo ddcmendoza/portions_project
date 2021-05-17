@@ -2,15 +2,17 @@
   <div class='form-group card p-1 m-1'>
     <%= form.hidden_field :_destroy %>
     <%= form.label :name %>
-    <%= form.text_field :name, placeholder: 'Name', class: 'form-control' %>
+    <%= form.text_field :name, placeholder: 'Name', class: 'form-control', disabled: params[:action] == 'show' %>
     <%= form.label :brand %>
     <%= form.text_field :brand, placeholder: 'Optional', class: 'form-control' %>
-    <%= form.label :measurement %>
-    <%= form.text_field :measurement, placeholder: 'e.g. grams, pieces,', class: 'form-control' %>  
-    <%= form.label :measurement_value %>
-    <%= form.number_field :measurement_value, step: 0.1, class: 'form-control' %> 
-    <%= form.label :price %>
-    <%= form.number_field :price, step: 0.1, class: 'form-control' %> 
+    <%= form.fields_for :ingredients_recipes_attributes do |f| %>
+      <%= f.label :measurement %>
+      <%= f.text_field :measurement, placeholder: 'e.g. grams, pieces,', class: 'form-control', value: ir_attr ? ir_attr.measurement : nil %>
+      <%= f.label :measurement_value %>
+      <%= f.number_field :measurement_value, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.measurement_value : nil %>
+      <%= f.label :price %>
+      <%= f.number_field :price, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.price : nil %>
+    <% end %>
     <small>
       <%= link_to "Remove", "#", method: :delete, data: { action: "click->nested-form#remove_association", confirm: "Are you sure?" } %>
     </small>

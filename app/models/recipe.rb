@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   belongs_to :parent, class_name: 'Recipe', optional: true, inverse_of: :children
   has_many :children, class_name: 'Recipe', foreign_key: 'parent_id', inverse_of: :parent, dependent: :nullify
   has_and_belongs_to_many :ingredients, join_table: 'ingredients_recipes'
+  has_many :ingredients_recipe, dependent: :destroy
 
   validates :name, presence: true
 

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # has_many :friends, class_name: 'User', foreign_key: 'friend_user_id', inverse_of: :friend #Implement https://hackernoon.com/how-to-create-a-friendship-relation-on-rails-c01d3u4v
   has_many :recipe_categories, dependent: :destroy
   has_many :recipes, through: :recipe_categories
-  after_save :create_general_category
+  after_create :create_general_category
 
   private
 

@@ -14,7 +14,7 @@
     
   </head>
   <body>
-    <div class="container">
+    <div class="container bg-light mt-2 p-2">
       <% flash.each do |name, msg, msg_error| %>
         <% if msg == "Signed in successfully." || "Signed out successfully." %>
           <div class="alert alert-primary" role="alert">

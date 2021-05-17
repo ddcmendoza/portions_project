@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = CreateRecipe.new(recipe_params)
     if @recipe.save
       redirect_to recipes_path
     else
@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
   def edit; end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    @recipe = UpdateRecipe.new(params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipes_path
     else
@@ -44,6 +44,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :id, :description, :recipe_category_id, ingredients_attributes: %i[_destroy name brand measurement measurement_value price id])
+    params.require(:recipe).permit(:name, :id, :description, :recipe_category_id, ingredients_attributes: [:_destroy, :name, :brand, :id, { ingredients_recipes_attributes: %i[measurement measurement_value price] }])
   end
 end

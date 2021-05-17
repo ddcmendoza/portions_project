@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_16_100100) do
+ActiveRecord::Schema.define(version: 2021_05_17_162441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,9 @@ ActiveRecord::Schema.define(version: 2021_05_16_100100) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "brand"
-    t.string "measurement"
-    t.decimal "measurement_value"
-    t.decimal "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "specification"
-    t.index ["specification"], name: "index_ingredients_on_specification", unique: true
+    t.index ["name", "brand"], name: "index_ingredients_on_name_and_brand", unique: true
   end
 
   create_table "ingredients_recipes", force: :cascade do |t|
@@ -32,6 +28,9 @@ ActiveRecord::Schema.define(version: 2021_05_16_100100) do
     t.bigint "recipe_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "measurement"
+    t.decimal "measurement_value"
+    t.decimal "price"
     t.index ["ingredient_id", "recipe_id"], name: "index_ingredients_recipes_on_ingredient_id_and_recipe_id", unique: true
   end
 
@@ -41,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_100100) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.index ["name", "user_id"], name: "index_recipe_categories_on_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_recipe_categories_on_user_id"
   end
 
