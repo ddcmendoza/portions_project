@@ -251,6 +251,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sweetify (2.0.0)
+      actionpack
     temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
@@ -315,6 +317,7 @@ DEPENDENCIES
   shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)
+  sweetify
   turbolinks (~> 5)
   tzinfo-data
   vcr
