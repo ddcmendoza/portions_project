@@ -44,10 +44,3 @@ Features:
 * Estimate the cost of your dish or see how much you can mark it up!
 
 
-### TO DO:
-#### Specifics to be added as the project goes along
-- [] Finalize User Stories
-- [] Session and Authentication
-- [] Modeling
-- [] Views
-- [] Controllers
