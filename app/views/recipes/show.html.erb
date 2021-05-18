@@ -1,0 +1,14 @@
+<%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch do |form| %>
+    <%= form.label :recipe_category %>
+    <%= form.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false}, id: "recipe_category"%> <br/>
+
+    <%= form.label :name %>
+    <%= form.text_field :name %> <br/>
+
+    <%= form.label :description %>
+    <%= form.text_area :description%> <br/>
+    
+    <%= render 'miniform', form: form, ingredients: :ingredients %>
+    <%= form.submit %>
+<% end %>
+      <%#= link_to "Remove", recipe_remove_ingredient_path(ing_id: ingredient.id), method: :delete, data: {confirm: "Are you sure?",}%>

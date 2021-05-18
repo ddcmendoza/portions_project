@@ -1,0 +1,26 @@
+<%= form_with(model: recipe, local: true) do |form| %>
+  <div class="field">
+   <div class="container mt-1">
+        <%= form.label :recipe_category %>
+        <%= form.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false}%>
+   </div>
+
+    <div class="container mt-1">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div class="container mt-1">
+        <%= form.label :description %>
+        <%= form.text_area :description%>
+    </div>
+  </div>
+
+
+<h1>Ingredients</h1>
+
+  <%= render 'miniform', form: form %>
+<div class="actions">
+    <%= form.submit 'Create' %>
+  </div>
+<% end %>

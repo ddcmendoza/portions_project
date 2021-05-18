@@ -1,0 +1,58 @@
+<% form_with model: @ingredient %>
+<% end %>
+
+<%
+=begin 
+  <%= form_with model: @recipe, method: :post, url: recipes_path do |f|%>
+  <div class="container mt-1">
+    <%= f.label :recipe_category %>
+    <%= f.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false}%>
+  </div>
+  <div class="container mt-1">
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+  </div>
+  <div class="container mt-1">
+    <%= f.label :description %>
+    <%= f.text_area :description%>
+  </div>
+  <div data-controller="ingredients">
+    <%= f.label :ingredients %>
+    <div class='container mt-1' data-ingredients-target='container'>
+      <button data-action="click->ingredients#add">
+        <span class="iconify" data-icon="codicon:add" data-inline="false" >
+        </span>
+      </button>
+    </div>
+    <div data-action="click->ingredients#remove">
+      <span class="iconify" data-icon="el:remove" data-inline="false" >
+      </span>
+    </div>
+  </div>
+  <%= f.submit 'Create' %>
+<%end%>
+=end %>
+
+
+
+<%
+=begin
+<p id="notice"><%= notice %></p>
+<%= @recipe.name %> </br>
+<%= @recipe.description %> </br>
+<%= "Category: #{@recipe.recipe_category.name}" %> </br>
+<% @recipe.ingredients.each do |ingredient| %>
+<div class='card p-1 m-1'>
+    <%= ingredient.name %> </br>
+    <%= ingredient.brand %> </br>
+    <%= "#{ingredient.measurement_value} #{ingredient.measurement}" %> </br>
+    <%= number_to_currency ingredient.price %> </br>
+    
+</div>
+
+<% end %>
+<%#= render 'form', recipe: @recipe %>
+
+<%= link_to 'Back', recipes_path %>
+=end
+%>
