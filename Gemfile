@@ -5,6 +5,7 @@ ruby '3.0.0'
 #new commit
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 gem 'pg'
+gem 'rest-client'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 5.0'
