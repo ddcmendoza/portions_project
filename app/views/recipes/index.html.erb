@@ -1,34 +1,41 @@
-<ul>
-  <% @recipe_categories.each do |category| %>
-    <li>
-      <%= category.name %>
-      <% recipes = Recipe.where(recipe_category_id: category.id)%>
-      <table class="table">
-        <thead>
-          <tr>
-            <th> Recipe Name</th>
-            <th> Cost per Recipe </th>
-            <th> Serving Size </th>
-            <th> Action </th>
-          </tr>
-        </thead>
+<div class="main-body bg-light mt-3 p-3">
+    <%=  render "shared/nav" %>
+         <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Recipes</li>
+      </ol>
+    </nav> 
+     <% @recipe_categories.each do |category| %>
+      <h2><%= category.name %></h2>
+        <%= link_to new_recipe_path do %>
+          <button type="button" class="btn btn-info mt-1"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <% end %><hr>
+    <div class="row gutters-sm">
+        <% recipes = Recipe.where(recipe_category_id: category.id)%>
         <% recipes.each do |recipe| %>
-         <tbody>
-            <tr>
-              <td><%= recipe.name%></td>
-              <td> <%=number_to_currency recipe.price, unit: "PhP", format: "%u %n" %> </td>
-              <td> <%= "Good for #{recipe.servings} person#{recipe.servings > 1 ? 's' : ''}"%> </td>
-              <td>
-              <%= link_to "Edit", recipe_path(recipe)%>
-              <%= link_to "Create Dish", new_dish_path(recipe)%>
-              </td>
-              <tr>
-         </tbody>
-            <% end %>
-          </table>
-        </li>
-      <% end %>
-    </ul>
-    <%= link_to new_recipe_path do %>
-      <button type="button" class="btn btn-info mt-1">Create new Recipe</button>
-    <% end %>
+      <div class="col-md-3 col-sm-6" style="margin-bottom: 3rem!important;">
+        <div class="card-re card-block">
+          <div >
+            <%= image_tag("cake.jpg", :alt => "rss feed" , class:"card-img-top") %>   
+ 
+            <%= link_to recipe_path(recipe), class:"card-title" do%>  
+              <h3 style="text-align:center;padding:10px; " class="btn-a"> <%= recipe.name%></h3>
+              
+            <%end%>
+              <p class="card-text">
+                 <%= recipe.description%>
+              </p>  
+          </div>
+        </div>
+      </div>
+          <% end %>
+        <% end %>
+    </div>
+</div>
+
+
+
+
+
