@@ -1,3 +1,76 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.img-re{
+  height:150px;
+  width:100%;
+}
+
+div [class^="col-"]{
+  padding-left:2px;
+  padding-right:2px;
+  
+}
+.card-re{
+  transition:0.5s;
+  cursor:pointer;
+  width: 270px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  
+}
+.card-title{  
+    margin-bottom:100px;
+  font-size:20px;
+  transition:1s;
+  cursor:pointer;
+}
+.card-title i{  
+  font-size:15px;
+  transition:1s;
+  cursor:pointer;
+  color:#ffa710
+}
+.card-title i:hover{
+  transform: scale(1.25) rotate(100deg); 
+  color:#18d4ca;
+  
+}
+.card-re:hover{
+  transform: scale(1.05);
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+}
+.card-text{
+  height:80px;  
+}
+
+.card-re::before, .card::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: scale3d(0, 0, 1);
+  transition: transform .3s ease-out 0s;
+  background: rgba(255, 255, 255, 0.1);
+  content: '';
+  pointer-events: none;
+}
+.card-re::before {
+  transform-origin: left top;
+}
+.card-re::after {
+  transform-origin: right bottom;
+}
+.card-re:hover::before, .card-re:hover::after, .card-re:focus::before, .card-re:focus::after {
+  transform: scale3d(1, 1, 1);
+}
+.btn-a:link, .btn-a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+

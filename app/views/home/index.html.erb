@@ -1,27 +1,125 @@
-<nav class="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="http://localhost:3000/" style="font-family: 'Gloria Hallelujah', cursive;font-size: 3rem;font-weight: 200;color: #009900;text-shadow: 2px 1px 1px #d7d7d7;">Portions</a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" href="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item mx-0 mx-lg-1">
-                    <%= link_to ('Recipes'), recipes_path,class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %>
-                </li>
-                <li class="nav-item mx-0 mx-lg-1">
-                    <%- if user_signed_in?%>
-                        <%= link_to destroy_session_path(resource_name),class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger", method: :delete do %>
-                        log out</li>
-                        <% end %>
-                    <% end %>        
-                </li>       
-            </ul>
+
+    <div class="main-body bg-light mt-3 p-3">
+            <%=  render "shared/nav" %>
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item">dashboard</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card-maw">
+                <div class="card-body-maw">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>John Doe</h4>
+                      <p class="text-secondary mb-1">Chef</p>
+                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                      <!-- <button class="btn btn-primary">Follow</button>
+                      <button class="btn btn-outline-primary">Message</button> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-maw mt-3">
+
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md- mb-4">
+                    <div class="card-d border-left-primary shadow h -100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                      Recipes</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card-d border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        share</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-share fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card-d border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                      fork
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card-d border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                      like
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">4</div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </div>
+
         </div>
-    </div>
-</nav>
 
  
 
