@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit destroy recipe_remove_ingredient]
+  before_action :set_recipe, only: %i[show edit destroy recipe_remove_ingredient new_dish]
   def index
     @recipe_categories = RecipeCategory.where(user_id: current_user.id)
   end
@@ -35,6 +35,10 @@ class RecipesController < ApplicationController
   def recipe_remove_ingredient
     @recipe.ingredients.delete(Ingredient.find(params[:ing_id]))
     redirect_to recipe_path(params[:id])
+  end
+
+  def new_dish
+    
   end
 
   private

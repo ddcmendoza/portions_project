@@ -21,7 +21,6 @@ export default class extends Controller{
         this.containerTarget.appendChild(ing);
         this.containerTarget.appendChild(document.createElement('br'))
         this.value++ ;
-        
     }
     remove(e){
         console.log(e.target.nodeName)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_113816) do
+ActiveRecord::Schema.define(version: 2021_05_21_125011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 2021_05_21_113816) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "recipe_category_id"
     t.bigint "parent_id"
+    t.decimal "price", default: "0.0"
+    t.boolean "public", default: false
+    t.integer "servings", default: 1
     t.index ["recipe_category_id"], name: "index_recipes_on_recipe_category_id"
   end
 
