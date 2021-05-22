@@ -1,3 +1,13 @@
+<div class="main-body bg-light mt-3 p-3">
+<%=  render "shared/nav" %>
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Recipes</li>
+        <li class="breadcrumb-item">Show</li>
+      </ol>
+    </nav> 
+
 <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch do |form| %>
     <%= form.label :recipe_category %>
     <%= form.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false}, id: "recipe_category"%> <br/>
@@ -12,3 +22,4 @@
     <%= form.submit %>
 <% end %>
       <%#= link_to "Remove", recipe_remove_ingredient_path(ing_id: ingredient.id), method: :delete, data: {confirm: "Are you sure?",}%>
+</div>
