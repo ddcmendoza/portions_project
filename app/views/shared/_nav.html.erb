@@ -8,14 +8,17 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="http://localhost:3000/">Home  <i class="fa fa-home" aria-hidden="true"></i></a></li>
             <li class="nav-item mx-0 mx-lg-1">
-                <%= link_to ('Recipes'), recipes_path,class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %>
+                <%= link_to recipes_path,class:"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" do %>
+                Recipes <i class="fas fa-file"></i>
+                <%end%>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
                 <%- if user_signed_in?%>
                     <%= link_to destroy_session_path(resource_name),class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger", method: :delete do %>
-                      log out</li>
+                      log out <i class="fas fa-sign-out-alt"></i>
                     <% end %>
-                  <% end %>        
+                  <% end %>
+            </li>      
             </li>       
          </ul>
     </div>     
