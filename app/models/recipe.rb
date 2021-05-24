@@ -5,8 +5,8 @@ class Recipe < ApplicationRecord
   has_and_belongs_to_many :ingredients, join_table: 'ingredients_recipes'
   has_many :ingredients_recipe, dependent: :destroy
 
-  scope :public, -> {where(public: true)}
-  scope :private, -> {where(public: false)}
+  scope :public_recipes, -> {where(public: true)}
+  scope :private_recipes, -> {where(public: false)}
 
   validates :name, presence: true
 
