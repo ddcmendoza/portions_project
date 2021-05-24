@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = CreateRecipe.new(recipe_params)
     if @recipe.save
+      @recipe_only = CheckPrices.new(Recipe.find_by(@recipe.recipe))
       redirect_to recipes_path
     else
       render :new

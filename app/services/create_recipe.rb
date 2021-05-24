@@ -1,4 +1,5 @@
 class CreateRecipe
+  attr_accessor :recipe
   def initialize(params)
     @recipe = params.except(:ingredients_attributes)
     @ingredients = params[:ingredients_attributes] || []
@@ -13,7 +14,7 @@ class CreateRecipe
 
         ing = ingredient[1].except(:_destroy, :ingredients_recipes_attributes)
         ing_rec_attr = ingredient[1].slice(:ingredients_recipes_attributes)[:ingredients_recipes_attributes]
-        i = Ingredient.create(ing) || Ingredient.find_by(ing)
+        i = Ingredient.find_by(ing) || Ingredient.create(ing)
         r.ingredients << i
         i_r = IngredientsRecipe.find_entry(r, i)
         i_r.update(ing_rec_attr)
