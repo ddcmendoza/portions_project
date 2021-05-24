@@ -17,7 +17,7 @@ export default class extends Controller{
         });
     }
     compute(e){
-        let amountContainer = this.amountTargets.find(element => element.id === e.target.id);
+        // let amountContainer = this.amountTargets.find(element => element.id === e.target.id);
         let recipeAmount = this.recipe[e.target.id];
         // let value = parseFloat(amountContainer.innerHTML);
         // if (value > e.target.value || value == 0 && e.target.value != 0){

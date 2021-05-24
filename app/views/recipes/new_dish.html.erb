@@ -1,20 +1,22 @@
-<%= @recipe.name %>
-<table  class="table" data-controller='calculate' data-calculate-serving-value="<%= @recipe.servings %>">
-
-    <% @recipe.ingredients.each do |ingredient| %>
-    <% ing = IngredientsRecipe.find_entry(@recipe, ingredient)%>
-    <p>
-    <tr >
-        <td>
-        this recipe needs <i><%= ingredient.name %></>, <b><%= "#{ing.measurement_value} #{ing.measurement}"%> </b>
-        <input type='number' style="display:none" data-calculate-target='needed' value="<%= "#{ing.measurement_value}"%>"id="<%= "#{ingredient.name}"%>"> 
-        </td>
-        <td><span style="text-indent:5px;">  <span data-calculate-target='verb' id="<%= "#{ingredient.name}"%>">and I have</span></td>
-        <td> <input type="number" id="<%= "#{ingredient.name}"%>" data-action="change->calculate#compute" data-calculate-target='amount'></input> <%= " #{ing.measurement} #{ingredient.name}"%></span></td>
-        <!-- <td data-calculate-target='amount' id="<%= "#{ingredient.name}"%>">0</td> -->
-    </tr>
-    </p>
-    <% end %>
-    <p></p>
-</table>    
-<%= link_to 'Back', recipes_path %>
+<div class="main-body bg-light mt-3 p-3 rounded">
+    <%= @recipe.name %>
+    <table  class="table" data-controller='calculate' data-calculate-serving-value="<%= @recipe.servings %>">
+    
+        <% @recipe.ingredients.each do |ingredient| %>
+        <% ing = IngredientsRecipe.find_entry(@recipe, ingredient)%>
+        <p>
+        <tr >
+            <td>
+            this recipe needs <i><%= ingredient.name %></>, <b><%= "#{ing.measurement_value} #{ing.measurement}"%> </b>
+            <input type='number' style="display:none" data-calculate-target='needed' value="<%= "#{ing.measurement_value}"%>"id="<%= "#{ingredient.name}"%>"> 
+            </td>
+            <td><span style="text-indent:5px;">  <span data-calculate-target='verb' id="<%= "#{ingredient.name}"%>">and I have</span></td>
+            <td> <input type="number" id="<%= "#{ingredient.name}"%>" data-action="change->calculate#compute" data-calculate-target='amount'></input> <%= " #{ing.measurement} #{ingredient.name}"%></span></td>
+            <!-- <td data-calculate-target='amount' id="<%= "#{ingredient.name}"%>">0</td> -->
+        </tr>
+        </p>
+        <% end %>
+        <p></p>
+    </table>    
+    <%= link_to 'Back', recipes_path %>
+</div>

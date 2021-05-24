@@ -1,41 +1,35 @@
 <div class="main-body bg-light mt-3 p-3">
-    <%=  render "shared/nav" %>
-         <!-- Breadcrumb -->
-    <nav aria-label="breadcrumb" class="main-breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Recipes</li>
-      </ol>
-    </nav> 
-     <% @recipe_categories.each do |category| %>
-      <h2><%= category.name %></h2>
-        <%= link_to new_recipe_path do %>
-          <button type="button" class="btn btn-info mt-1"><i class="fa fa-plus" aria-hidden="true"></i></button>
-        <% end %><hr>
+  <%=  render "shared/nav" %>
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item">Recipes</li>
+    </ol>
+  </nav>
+  <% @recipe_categories.each do |category| %>
+    <h2><%= category.name %></h2>
+    <%= link_to new_recipe_path do %>
+      <button type="button" class="btn btn-info mt-1"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <% end %><hr>
     <div class="row gutters-sm">
-        <% recipes = Recipe.where(recipe_category_id: category.id)%>
-        <% recipes.each do |recipe| %>
-      <div class="col-md-3 col-sm-6" style="margin-bottom: 3rem!important;">
-        <div class="card-re card-block">
-          <div >
-            <%= image_tag("cake.jpg", :alt => "rss feed" , class:"card-img-top") %>   
- 
-            <%= link_to recipe_path(recipe), class:"card-title" do%>  
-              <h3 style="text-align:center;padding:10px; " class="btn-a"> <%= recipe.name%></h3>
-              
-            <%end%>
+      <% recipes = Recipe.where(recipe_category_id: category.id)%>
+      <% recipes.each do |recipe| %>
+        <div class="col-md-3 col-sm-6" style="margin-bottom: 3rem!important;">
+          <div class="card-re card-block">
+            <div >
+              <%= image_tag("cake.jpg", :alt => "rss feed" , class:"card-img-top") %>
+              <%= link_to recipe_path(recipe), class:"card-title" do%>
+                <h3 style="text-align:center;padding:10px; " class="btn-a"> <%= recipe.name%></h3>
+              <%end%>
               <p class="card-text">
-                 <%= recipe.description%>
-              </p>  
+                <%= recipe.description%>
+              </p>
+               <%= link_to "Create Dish", new_dish_path(recipe)%>
+            </div>
           </div>
         </div>
-      </div>
-          <% end %>
-        <% end %>
-    </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-
-
-
-

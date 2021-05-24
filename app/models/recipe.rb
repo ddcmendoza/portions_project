@@ -5,6 +5,9 @@ class Recipe < ApplicationRecord
   has_and_belongs_to_many :ingredients, join_table: 'ingredients_recipes'
   has_many :ingredients_recipe, dependent: :destroy
 
+  scope :public, -> {where(public: true)}
+  scope :private, -> {where(public: false)}
+
   validates :name, presence: true
 
   accepts_nested_attributes_for :ingredients, reject_if: ->(attributes) { attributes['name'].blank? }, allow_destroy: true
