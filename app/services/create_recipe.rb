@@ -1,7 +1,7 @@
 class CreateRecipe
   def initialize(params)
     @recipe = params.except(:ingredients_attributes)
-    @ingredients = params[:ingredients_attributes]
+    @ingredients = params[:ingredients_attributes] || []
   end
 
   def save
