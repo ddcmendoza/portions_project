@@ -4,9 +4,12 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item">Home</li>
         <li class="breadcrumb-item">Recipes</li>
-        <li class="breadcrumb-item">New</li>
+        <li class="breadcrumb-item">Create</li>
       </ol>
     </nav> 
-<%= render 'form', recipe: @recipe %>
-<%= link_to 'Back', recipes_path %>
+
+  <%= render 'form', recipe: @recipe %>
+  <div class="container mt-1 col-md-5">
+  <%# <%= link_to 'Back', recipes_path %>
+  </div>
 </div>

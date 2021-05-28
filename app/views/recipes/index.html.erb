@@ -21,11 +21,21 @@
               <%= image_tag("cake.jpg", :alt => "rss feed" , class:"card-img-top") %>
               <%= link_to recipe_path(recipe), class:"card-title" do%>
                 <h3 style="text-align:center;padding:10px; " class="btn-a"> <%= recipe.name%></h3>
-              <%end%>
+              <% end %>
+              <div class="center">
+                  <%= link_to new_dish_path(recipe), class: "btn btn-outline-info btn-sm" do  %>
+                    Create Dish <i class="fa fa-plus" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to  new_dish_path(recipe), class: "btn btn-outline-success btn-sm" do %>
+                    Share <i class="fa fa-share-alt" aria-hidden="true"></i>
+                  <% end %>
+                  <%= link_to new_dish_path(recipe), class: "btn btn-outline-danger btn-sm" do %>
+                    Fork <i class="fa fa-code-fork" aria-hidden="true"></i>
+                  <% end %>
+                </div>
               <p class="card-text">
-                <%= recipe.description%>
+                <%= recipe.description %>
               </p>
-               <%= link_to "Create Dish", new_dish_path(recipe)%>
             </div>
           </div>
         </div>

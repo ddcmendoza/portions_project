@@ -1,5 +1,5 @@
 <div class='nested-fields'>
-  <div class='form-group card p-1 m-1' data-controller='fetch-price' data-fetch-price-url-value='<%= fetch_price_path %>'>
+  <div class='form-group card p-1 m-1 col-md-12' data-controller='fetch-price' data-fetch-price-url-value='<%= fetch_price_path %>'>
     <%= form.hidden_field :_destroy %>
     <%= form.hidden_field :_post, value: 0, data: {fetch_price_target: 'toPost'} %>
     <%= form.label :name %>
