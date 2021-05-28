@@ -5,11 +5,11 @@ class Recipe < ApplicationRecord
   has_and_belongs_to_many :ingredients, join_table: 'ingredients_recipes'
   has_many :ingredients_recipe, dependent: :destroy
 
-  scope :public_recipes, -> {where(public: true)}
-  scope :private_recipes , -> {where(public: false)}
+  scope :public_recipes, -> { where(public: true) }
+  scope :private_recipes, -> { where(public: false) }
 
   validates :name, presence: true
-  validates :name, uniqueness: {scope: :recipe_category_id}
+  validates :name, uniqueness: { scope: :recipe_category_id }
 
   accepts_nested_attributes_for :ingredients, reject_if: ->(attributes) { attributes['name'].blank? }, allow_destroy: true
 end

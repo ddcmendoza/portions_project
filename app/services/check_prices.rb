@@ -1,12 +1,14 @@
+require 'rest-client'
 class CheckPrices
-    def initialize(recipe)
-        @recipe = recipe
-        @ingredients = @recipe.ingredients
-        byebug
-    end
+  def initialize(recipe)
+    @recipe = recipe
+    @user = 
+    @ingredients = @recipe.ingredients
+  end
 
-    def check_price(ingredient)
+  def check_price(ingredient)
+    @ingredients.each do |ingredient|
 
     end
-    
+  end
 end

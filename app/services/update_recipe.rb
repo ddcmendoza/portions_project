@@ -11,7 +11,7 @@ class UpdateRecipe
       @recipe.update(recipe_attr)
       ingredients_attr.each do |ingredient|
         to_destroy = ingredient[1].slice(:_destroy)[:_destroy] == '1'
-        ing = ingredient[1].except(:_destroy, :ingredients_recipes_attributes)
+        ing = ingredient[1].except(:_destroy, :ingredients_recipes_attributes, :_post)
         ing_rec_attr = ingredient[1].slice(:ingredients_recipes_attributes)[:ingredients_recipes_attributes]
         i_tmp = Ingredient.find_by(ing) || Ingredient.create(ing.except(:id))
         i = i_tmp

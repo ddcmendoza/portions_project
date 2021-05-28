@@ -38,9 +38,7 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(params[:id])
   end
 
-  def new_dish
-    
-  end
+  def new_dish; end
 
   private
 
@@ -49,6 +47,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :id, :description, :recipe_category_id, ingredients_attributes: [:_destroy, :name, :brand, :id, { ingredients_recipes_attributes: %i[measurement measurement_value price] }])
+    params.require(:recipe).permit(:name, :id, :description, :recipe_category_id, ingredients_attributes: [:_destroy, :_post, :name, :brand, :id, { ingredients_recipes_attributes: %i[measurement measurement_value price] }])
   end
 end

@@ -14,4 +14,13 @@ class IngredientsController < ApplicationController
   def destroy
     Ingredient.destroy(params[:id])
   end
+  
+  def update_price
+    
+  end
+
+  def fetch_price
+    @fetch_price = FetchPrice.call(params)
+    render json: @fetch_price
+  end
 end
