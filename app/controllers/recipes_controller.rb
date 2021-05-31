@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = CreateRecipe.new(recipe_params)
     if @recipe.save
-      @recipe_only = CheckPrices.new(Recipe.find_by(@recipe.recipe))
+      # @recipe_only = CheckPrices.new(Recipe.find_by(@recipe.recipe))
       redirect_to recipes_path
     else
       render :new
@@ -31,7 +31,9 @@ class RecipesController < ApplicationController
 
   def show; end
 
-  def destroy; end
+  def destroy
+    redirect_to recipes_path
+  end
 
   def recipe_remove_ingredient
     @recipe.ingredients.delete(Ingredient.find(params[:ing_id]))

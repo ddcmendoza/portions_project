@@ -1,126 +1,114 @@
-
-    <div class="main-body bg-light mt-3 p-3">
-            <%=  render "shared/nav" %>
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item">Dashboard</li>
-            </ol>
-          </nav>
-          <!-- /Breadcrumb -->
-    
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card-maw">
-                <div class="card-body-maw">
-                  <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                    <div class="mt-3">
-                      <h4>John Doe</h4>
+<div class="main-body bg-light mt-3 p-3">
+  <%=  render "shared/nav" %>
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item">Dashboard</li>
+    </ol>
+  </nav>
+  <!-- /Breadcrumb -->
+  <div class="row gutters-sm">
+    <div class="col-md-4 mb-3">
+      <div class="card-maw">
+        <div class="card-body-maw">
+          <div class="d-flex flex-column align-items-center text-center">
+            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+            <div class="mt-3">
+              <h4><%= current_user.email%></h4>
+              <!-- 
                       <p class="text-secondary mb-1">Chef</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                      <!-- <button class="btn btn-primary">Follow</button>
+                      <button class="btn btn-primary">Follow</button>
                       <button class="btn btn-outline-primary">Message</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-maw mt-3">
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md- mb-4">
+          <div class="card-d border-left-primary shadow h -100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    <a href=<%= recipes_path %>>Recipes</a>
+                  </div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><%= current_user.recipes.length %></div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-file fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card-d border-left-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                    share</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-share fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card-d border-left-info shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                    fork
+                  </div>
+                  <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">4</div>
                     </div>
                   </div>
                 </div>
+                <div class="col-auto">
+                  <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                </div>
               </div>
-              <div class="card-maw mt-3">
-
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="row">
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md- mb-4">
-                    <div class="card-d border-left-primary shadow h -100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                      Recipes</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-file fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card-d border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        share</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-share fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card-d border-left-info shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                      fork
-                                    </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">4</div>
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card-d border-left-like shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                      like
-                                    </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">4</div>
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-thumbs-up fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             </div>
           </div>
-
         </div>
-
- 
-
-    
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card-d border-left-like shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                    like
+                  </div>
+                  <div class="row no-gutters align-items-center">
+                    <div class="col-auto">
+                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">4</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-thumbs-up fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,10 +11,10 @@ class CreateRecipe
       r = Recipe.create(@recipe)
       @ingredients.each do |ingredient|
         next if ingredient[1].slice(:_destroy)[:_destroy] == '1'
+
         ing = ingredient[1].except(:_destroy, :ingredients_recipes_attributes, :_post)
-        price = ing[:price]
-        # if ingredient[1].slice[:_post][:post]
-        #   PostPrice.call(price)
+        # if ingredient[1].slice[:_post][:post] == '1'
+        #   PostPrice.call(ing[:price])
         # end
         ing_rec_attr = ingredient[1].slice(:ingredients_recipes_attributes)[:ingredients_recipes_attributes]
         i = Ingredient.find_by(ing) || Ingredient.create(ing)

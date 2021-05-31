@@ -12,7 +12,10 @@
       <%= f.label :measurement_value %>
       <%= f.number_field :measurement_value, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.measurement_value : nil, data: {fetch_price_target: 'measurementValue'} %>
       <%= f.label :price %>
+      <div class="d-flex flex-row">
       <%= f.number_field :price, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.price : nil, data: {fetch_price_target: 'price'} %>
+      <span data-fetch-price-target="notification"></span>
+      </div>
     <% end %>
     <small>
       <%= link_to "Remove", "#", method: :delete, data: { action: "click->nested-form#remove_association", confirm: "Are you sure?" } %>
