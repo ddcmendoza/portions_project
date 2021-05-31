@@ -32,6 +32,7 @@ class RecipesController < ApplicationController
   def show; end
 
   def destroy
+    Recipe.destroy(params[:id])
     redirect_to recipes_path
   end
 

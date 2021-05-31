@@ -21,8 +21,9 @@ export default class extends Controller {
   //
   fetchPrice(e) {
     e.preventDefault();
+    this.notificationTarget.innerHTML = "";
     fetch(
-      `${this.urlValue}?name=${this.nameTarget.value}&brand=${this.brandTarget.value}&measurement=${this.measurementTarget.value}&mvalue=${this.measurementValueTarget.value}`
+      `${this.urlValue}?name=${this.nameTarget.value}&brand=${this.brandTarget.value}&measurement=${this.measurementTarget.value}&measurement_value=${this.measurementValueTarget.value}`
     )
       .then((response) => {
         return response.json();
@@ -39,7 +40,7 @@ export default class extends Controller {
       this.notifyUser();
     } else {
       this.priceTarget.value = parseInt(price);
-      this.toPostTarget.value = 1;
+      this.toPostTarget.value = 0;
       console.log(price);
     }
   }
