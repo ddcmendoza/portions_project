@@ -2,6 +2,7 @@ class ApplicationService
   def initialize(params)
     @params = params
   end
+
   def self.call(...)
     new(...).call
   end

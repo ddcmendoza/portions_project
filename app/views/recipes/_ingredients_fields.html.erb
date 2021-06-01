@@ -13,12 +13,12 @@
       <%= f.number_field :measurement_value, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.measurement_value : nil, data: {fetch_price_target: 'measurementValue'} %>
       <%= f.label :price %>
       <div class="d-flex flex-row">
-      <%= f.number_field :price, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.price : nil, data: {fetch_price_target: 'price'} %>
+      <%= f.number_field :price, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.price : nil, data: {fetch_price_target: 'price', action: "change->fetch-price#updatePost"} %>
       <span data-fetch-price-target="notification"></span>
       </div>
     <% end %>
     <small>
-      <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association", confirm: "Are you sure?" } %>
+      <%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association"} %>
       <%= link_to "Get Price", "#", data: {action: 'click->fetch-price#fetchPrice'}%>
     </small>
   </div>

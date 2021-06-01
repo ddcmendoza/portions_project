@@ -13,7 +13,7 @@ export default class extends Controller {
   static values = { url: String };
 
   initialize() {
-    console.log(this.urlValue, this.toPostTarget.value);
+    // console.log(this.urlValue, this.toPostTarget.value);
     this.notificationTarget.innerHTML = "";
   }
   // Fetch with this controller
@@ -30,9 +30,13 @@ export default class extends Controller {
       })
       .then((data) => {
         this.changePrice(data.ingredient.price);
-        console.log(data);
+        // console.log(data);
       })
       .catch((e) => console.log(e));
+  }
+  updatePost(){
+    this.toPostTarget.value = 1;
+    // console.log("UPDATING POST!", this.toPostTarget.value);
   }
 
   changePrice(price) {
@@ -41,14 +45,13 @@ export default class extends Controller {
     } else {
       this.priceTarget.value = parseInt(price);
       this.toPostTarget.value = 0;
-      console.log(price);
+      // console.log(price);
     }
   }
 
   notifyUser() {
     this.notificationTarget.innerHTML = "Want to post a price for this item?";
     this.priceTarget.value = null;
-
-    console.log("Wanna post a price for this item?");
+    // console.log("Wanna post a price for this item?");
   }
 }

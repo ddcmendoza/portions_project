@@ -22,4 +22,3 @@ class IngredientsController < ApplicationController
     render json: @fetch_price
   end
 end
-
