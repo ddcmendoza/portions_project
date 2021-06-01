@@ -1,5 +1,14 @@
 <div class="main-body bg-light mt-3 p-3 rounded">
-    <%= @recipe.name %>
+  <%=  render "shared/nav" %>
+  <!-- Breadcrumb -->
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item">Recipes</li>
+      <li class="breadcrumb-item">Create Dish</li>
+    </ol>
+  </nav>
+    <h2><%= @recipe.name %></h2>
     <table  class="table" data-controller='calculate' data-calculate-serving-value="<%= @recipe.servings %>">
     
         <% @recipe.ingredients.each do |ingredient| %>
