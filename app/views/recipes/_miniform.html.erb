@@ -1,11 +1,11 @@
 <div data-controller="nested-form" class="container mt-1 col-md-6">
   <template data-nested-form-target='template'>
     <%= form.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
-      <%= render 'ingredients_fields', form: ingredient, ir_attr: nil%>
+      <%= render 'ingredients_fields', form: ingredient, ir_attr: nil, name_disabled: false%>
     <% end %>
   </template>
   <%= form.fields_for :ingredients do |ingredient| %>
-    <%= render 'ingredients_fields', form: ingredient , ir_attr: IngredientsRecipe.find_entry(@recipe, ingredient.object)%>
+    <%= render 'ingredients_fields', form: ingredient , ir_attr: IngredientsRecipe.find_entry(@recipe, ingredient.object), name_disabled: name_disabled%>
   <% end %>
   <div data-nested-form-target="add_item" class=" text-center">
     <%= link_to "Add Ingredient", "#", data: { action: "nested-form#add_association" } %>

@@ -1,32 +1,39 @@
 <div class="main-body bg-light mt-3 p-3">
-<%=  render "shared/nav" %>
-    <nav aria-label="breadcrumb" class="main-breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Recipes</li>
-        <li class="breadcrumb-item">Show</li>
-      </ol>
-    </nav> 
-
-<%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch do |form| %>
-  <div class="field">
-    <div class="container mt-1 col-md-6">
-      <%= form.label :recipe_category %>
-      <%= form.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false}, id: "recipe_category", class:"form-control"%> <br/>
-    </div>
-    <div class="container mt-1 col-md-6">
-      <%= form.label :name %>
-      <%= form.text_field :name ,class:"form-control" %> <br/>
-    </div>
-    <div class="container mt-1 col-md-6">
-      <%= form.label :description %>
-      <%= form.text_area :description ,class:"form-control"%> <br/>
-    </div>
-    
-    <%= render 'miniform', form: form, ingredients: :ingredients %>
-    <div class="actions text-center">
-      <%= form.submit 'Update Recipe',class:"btn btn-success btn-lg btn-block"%>
-    </div>
-<% end %>
-      <%#= link_to "Remove", recipe_remove_ingredient_path(ing_id: ingredient.id), method: :delete, data: {confirm: "Are you sure?",}%>
-</div>
+  <%=  render "shared/nav" %>
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item">Recipes</li>
+      <li class="breadcrumb-item">Show</li>
+    </ol>
+  </nav>
+  <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch do |form| %>
+    <div class="field">
+      <div class="container mt-1 col-md-6">
+        <%= form.label :recipe_category %>
+        <%= form.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false}, id: "recipe_category", class:"form-control"%> <br/>
+      </div>
+      <div class="container mt-1 col-md-6">
+        <%= form.label :name %>
+        <%= form.text_field :name ,class:"form-control" %> <br/>
+      </div>
+      <div class="container mt-1 col-md-6">
+        <%= form.label :description %>
+        <%= form.text_area :description ,class:"form-control"%> <br/>
+      </div>
+      <div data-controller="markup">
+        <%= render 'miniform', form: form, ingredients: :ingredients, name_disabled: true%>
+        <div class="actions text-center">
+          <%= form.submit 'Update Recipe',class:"btn btn-success btn-lg btn-block"%>
+        </div>
+        <div class="text-center mt-1">
+          <button class="btn btn-primary" data-action="click->markup#query">
+            How much can I sell this dish for?
+          </button>
+          <div data-markup-target="container">
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%#= link_to "Remove", recipe_remove_ingredient_path(ing_id: ingredient.id), method: :delete, data: {confirm: "Are you sure?",}%>
+  </div>
