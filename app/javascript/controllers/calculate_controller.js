@@ -4,7 +4,6 @@ export default class extends Controller{
     static targets = ["amount", "needed", "verb"]
     static values = {serving: Number}
     initialize(){
-        //console.log(this.servingValue)
         this.recipe = {};
         this.multiplier = 1;
         this.multiplier_source = "";
@@ -17,11 +16,12 @@ export default class extends Controller{
         });
     }
     compute(e){
+
         // let amountContainer = this.amountTargets.find(element => element.id === e.target.id);
         let recipeAmount = this.recipe[e.target.id];
         // let value = parseFloat(amountContainer.innerHTML);
         // if (value > e.target.value || value == 0 && e.target.value != 0){
-        this.multiplier = e.target.value/recipeAmount;
+        this.multiplier = parseFloat(e.target.value)/recipeAmount;
         this.multiplier_source = e.target.id
         this.multiplier_source_value = parseFloat(e.target.value)
         // amountContainer.innerHTML = e.target.value

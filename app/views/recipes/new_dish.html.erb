@@ -8,41 +8,62 @@
       <li class="breadcrumb-item">Create Dish</li>
     </ol>
   </nav>
-    <div class="row align-items-center event-block no-gutters margin-40px-bottom">
-        <div class="col-lg-5 col-sm-12">
-            <div class="position-relative">
-                <%= image_tag("cake.jpg", :alt => "rss feed" , class:"card-img-top") %>
-                <%# <div class="events-date">
+  <div class="row align-items-center event-block no-gutters margin-40px-bottom">
+    <div class="col-lg-5 col-sm-12">
+      <div class="position-relative">
+        <%= image_tag("cake.jpg", :alt => "rss feed" , class:"card-img-top") %>
+        <%# <div class="events-date">
                     <div class="font-size28">10</div>
                     <div class="font-size14">Mar</div>
                 </div> %>
-            </div>
-        </div>
-        <div class="col-lg-7 col-sm-12">
-            <div class="padding-60px-lr md-padding-50px-lr sm-padding-30px-all xs-padding-25px-all">
-                <h5 class="margin-15px-bottom md-margin-10px-bottom font-size22 md-font-size20 xs-font-size18 font-weight-500"><a href="event-details.html" class="text-theme-color"><%= @recipe.name %></a></h5>
-                 <table  class="table" data-controller='calculate' data-calculate-serving-value="<%= @recipe.servings %>">
-                    <% @recipe.ingredients.each do |ingredient| %>
-                    <% ing = IngredientsRecipe.find_entry(@recipe, ingredient)%> 
-                <ul class="event-time margin-10px-bottom md-margin-5px-bottom">
-                    <li><i class="fa fa-pencil-square-o" aria-hidden="true"></i>this recipe needs 
-                        <i><%= ingredient.name %></>, <b><%= "#{ing.measurement_value} #{ing.measurement}"%> </b><input type='number' style="display:none" data-calculate-target='needed' value="<%= "#{ing.measurement_value}"%>"id="<%= "#{ingredient.name}"%>"> 
-                        </i>
-                    </li>
-                </ul><hr>       
-                <p>
-                  <tr> 
-                    <td> <span>  <span data-calculate-target='verb' id="<%= "#{ingredient.name}"%>">and I have</span></td>
-                    <td> <input type="number" id="<%= "#{ingredient.name}"%>" data-action="change->calculate#compute" data-calculate-target='amount'></input> <%= " #{ing.measurement} #{ingredient.name}"%></span></td>
-                    <!-- <td data-calculate-target='amount' id="<%= "#{ingredient.name}"%>">0</td> -->
-                  </tr>
-                </p>
-                  <% end %>
-                </table>    
-            </div>
-        </div>
+      </div>
     </div>
-   
-    <%= link_to 'Back', recipes_path %>
-
+    <div class="col-lg-7 col-sm-12">
+      <div class="padding-60px-lr md-padding-50px-lr sm-padding-30px-all xs-padding-25px-all">
+        <h5 class="margin-15px-bottom md-margin-10px-bottom font-size22 md-font-size20 xs-font-size18 font-weight-500">
+          <span class="text-theme-color">
+            <%= @recipe.name %>
+          </span>
+        </h5>
+        <table  class="table" data-controller='calculate' data-calculate-serving-value="<%= @recipe.servings %>">
+          <% @recipe.ingredients.each do |ingredient| %>
+            <% ing = IngredientsRecipe.find_entry(@recipe, ingredient)%>
+            <ul class="event-time margin-10px-bottom md-margin-5px-bottom">
+              <li>
+                <a href=<%= recipe_path(@recipe) %> >
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+                this recipe needs 
+                <i>
+                  <%= ingredient.name %></i>, 
+                <b>
+                  <%= "#{ing.measurement_value} #{ing.measurement}"%>
+                </b>
+              </i>
+            </li>
+          </ul>
+          <hr>
+          <p>
+            <tr>
+              <td>
+                <span>
+                  <span data-calculate-target='verb' id="<%= "#{ingredient.name}"%>">
+                    and I have
+                  </span>
+                </td>
+                <td>
+                  <input type="number" id="<%= "#{ingredient.name}"%>" data-action="change->calculate#compute" data-calculate-target='amount'>
+                  <%= " #{ing.measurement} #{ingredient.name}"%>
+                </span>
+                <input type='number' style="display:none;" data-calculate-target='needed' value="<%= "#{ing.measurement_value}"%>"id="<%= "#{ingredient.name}"%>">
+              </td>
+              <!-- <td data-calculate-target='amount' id="<%= "#{ingredient.name}"%>">0</td> -->
+            </tr>
+          </p>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<%= link_to 'Back', recipes_path %>
 </div>
