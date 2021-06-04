@@ -12,11 +12,11 @@
             </style>
             <% if current_user == recipe.recipe_category.user%>
               <%= link_to recipe_path(recipe), class:"card-title" do%>
-                <h4> <%= recipe.name%> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h4>
+                <h4> <%= recipe.name.truncate(20)%> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h4>
               <% end %>
             <% else %>
               <%= link_to view_recipe_path(recipe), class:"card-title" do%>
-                <h4> <%= recipe.name%> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h4>
+                <h4> <%= recipe.name.truncate(20)%> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h4>
               <% end %>
               <% end %>
 
