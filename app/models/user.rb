@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   def number_forks
     count = 0
-    self.recipes.each do |recipe|
+    recipes.each do |recipe|
       count += recipe.children.length
     end
     count

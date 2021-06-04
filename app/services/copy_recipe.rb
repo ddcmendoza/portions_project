@@ -1,5 +1,6 @@
 class CopyRecipe < ApplicationService
   def initialize(recipe, user)
+    super
     @user = user
     @recipe = recipe
     @ingredients = recipe.ingredients
@@ -9,9 +10,7 @@ class CopyRecipe < ApplicationService
     ActiveRecord::Base.transaction do
       new_recipe = @recipe.dup
       new_recipe.parent = @recipe
-      if @user.id = @recipe.recipe_category.user_id
-        new_recipe.name += "_forked_" + DateTime.now.to_s(:number)
-      end
+      new_recipe.name += "_forked_#{DateTime.now.to_s(:number)}" if @user.id == @recipe.recipe_category.user_id
       new_recipe.recipe_category = @user.recipe_categories[0]
       @ingredients.each do |ingredient|
         new_recipe.ingredients << ingredient

@@ -47,15 +47,13 @@ class RecipesController < ApplicationController
     @new_recipe = CopyRecipe.call(@recipe, current_user)
     redirect_to recipes_path
   end
-  
+
   def share_recipe
     @recipe.update(public: @recipe.public ? false : true)
     redirect_to recipes_path
   end
 
-  def view_recipe
-
-  end
+  def view_recipe; end
 
   private
 
