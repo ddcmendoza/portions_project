@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit destroy recipe_remove_ingredient new_dish]
+  before_action :set_recipe, only: %i[show edit destroy recipe_remove_ingredient new_dish fork_recipe share_recipe view_recipe]
   def index
     @recipe_categories = RecipeCategory.where(user_id: current_user.id)
   end
@@ -42,6 +42,20 @@ class RecipesController < ApplicationController
   end
 
   def new_dish; end
+
+  def fork_recipe
+    @new_recipe = CopyRecipe.call(@recipe, current_user)
+    redirect_to recipes_path
+  end
+  
+  def share_recipe
+    @recipe.update(public: @recipe.public ? false : true)
+    redirect_to recipes_path
+  end
+
+  def view_recipe
+
+  end
 
   private
 

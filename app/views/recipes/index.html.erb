@@ -13,7 +13,7 @@
       <button type="button" class="btn btn-info mt-1"><i class="fa fa-plus" aria-hidden="true"></i></button>
     <% end %><hr>
     <div class="row gutters-sm">
-      <% recipes = Recipe.where(recipe_category_id: category.id)%>
+      <% recipes = Recipe.where(recipe_category_id: category.id).order("name ASC")%>
       <% recipes.each do |recipe| %>
         <div class="col-md-3 col-sm-6" style="margin-bottom: 3rem!important;">
           <div class="card-re card-block">
@@ -27,7 +27,7 @@
                   }
                   </style>
                     <%= link_to recipe_path(recipe), class:"card-title" do%>
-                     <h4> <%= recipe.name%> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h4>
+                     <h4> <%= recipe.name.truncate(20) %> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h4>
                     <% end %>
                   </li>
                  <li class="list-group-item"><p class="card-text" style="color:lightgrey;"><%= recipe.description %>  <i class="fa fa-file-text" aria-hidden="true"></i></p> </li>
@@ -44,13 +44,15 @@
                             <i class="fa fa-plus"  data-toggle="tooltip" data-placement="top"  title="Create Dish" aria-hidden="true"></i>
                           <% end %>
                         </li>
+
                         <li class="list-inline-item">
-                          <%= link_to  new_dish_path(recipe), class: "btn btn-outline-success btn-sm" do %>
-                            <i class="fa fa-share-alt"data-toggle="tooltip" data-placement="top"  title="Share" aria-hidden="true"></i>
+                          <%= link_to  share_recipe_path(recipe), method: :post, class: "btn btn-outline-#{recipe.public ? "warning" : "success"} btn-sm" do %>
+                            <i class="fa fa-share-alt"data-toggle="tooltip" data-placement="top"  title=<%= "#{recipe.public ? "Set to Private" : "Share"}"%> aria-hidden="true"></i>
                           <% end %>
                         </li>
+
                         <li class="list-inline-item">
-                         <%= link_to new_dish_path(recipe), class: "btn btn-outline-danger btn-sm" do %>
+                         <%= link_to fork_recipe_path(recipe), method: :post, class: "btn btn-outline-danger btn-sm" do %>
                             <i class="fa fa-code-fork" data-toggle="tooltip" data-placement="top"  title="Fork" aria-hidden="true"></i>
                         <% end %>
                         </li>

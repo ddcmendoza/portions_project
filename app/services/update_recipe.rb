@@ -6,7 +6,7 @@ class UpdateRecipe
 
   def update(params)
     recipe_attr = params.except(:ingredients_attributes)
-    ingredients_attr = params[:ingredients_attributes]
+    ingredients_attr = params[:ingredients_attributes] || []
     ActiveRecord::Base.transaction do
       @recipe.update(recipe_attr)
       ingredients_attr.each do |ingredient|

@@ -9,6 +9,14 @@ class User < ApplicationRecord
   has_many :recipes, through: :recipe_categories
   after_create :create_general_category
 
+  def number_forks
+    count = 0
+    self.recipes.each do |recipe|
+      count += recipe.children.length
+    end
+    count
+  end
+
   private
 
   def create_general_category

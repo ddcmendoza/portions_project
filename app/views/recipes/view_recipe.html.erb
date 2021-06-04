@@ -1,0 +1,30 @@
+<div class="main-body bg-light mt-3 p-3">
+  <%=  render "shared/nav" %>
+  <nav aria-label="breadcrumb" class="main-breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item">Recipes</li>
+      <li class="breadcrumb-item">View</li>
+    </ol>
+  </nav>
+  <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch do |form| %>
+    <div class="field">
+      <div class="container mt-1 col-md-6">
+        <%= form.label :name %>
+        <%= form.text_field :name ,class:"form-control", disabled: true %> <br/>
+      </div>
+      <div class="container mt-1 col-md-6">
+        <%= form.label :description %>
+        <%= form.text_area :description ,class:"form-control", disabled: true %> <br/>
+      </div>
+      <div class="container mt-1 col-md-6">
+        <% @recipe.ingredients.each do |ingredient|%>
+        <% ing_attr = IngredientsRecipe.find_entry(@recipe, ingredient)%>
+          <h1><%= ingredient.name%></h1>
+          <p> <%= ingredient.brand%> </p>
+          <p> <%= ing_attr.measurement_value%> <%= ing_attr.measurement%> </p>
+          <p> <%= number_to_currency ing_attr.price%> </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>

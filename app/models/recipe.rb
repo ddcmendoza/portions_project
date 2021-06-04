@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
   has_and_belongs_to_many :ingredients, join_table: 'ingredients_recipes'
   has_many :ingredients_recipe, dependent: :destroy
 
-  scope :public_recipes, -> { where(public: true) }
+  scope :public_recipes, -> { where(public: true).order("updated_at DESC") }
   scope :private_recipes, -> { where(public: false) }
 
   validates :name, presence: true
