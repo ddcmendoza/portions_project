@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = resource
     @user.save
     if @user.persisted?
-      if ENV['RAILS_ENV'] != 'test'
+      if Rails.env != 'test'
         @req_api = RequestApi.new(resource).request
         @user.update(@req_api)
       end
