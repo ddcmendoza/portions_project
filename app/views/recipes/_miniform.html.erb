@@ -1,4 +1,4 @@
-<div data-controller="nested-form" class="container mt-1 col-md-6">
+<div data-controller="nested-form" class="mt-1 col-md-12">
   <template data-nested-form-target='template'>
     <%= form.fields_for :ingredients, Ingredient.new, child_index: 'TEMPLATE_RECORD' do |ingredient| %>
       <%= render 'ingredients_fields', form: ingredient, ir_attr: nil, name_disabled: false%>
@@ -7,7 +7,7 @@
   <%= form.fields_for :ingredients do |ingredient| %>
     <%= render 'ingredients_fields', form: ingredient , ir_attr: IngredientsRecipe.find_entry(@recipe, ingredient.object), name_disabled: name_disabled%>
   <% end %>
-  <div data-nested-form-target="add_item" class=" text-center">
-    <%= link_to "Add Ingredient", "#", data: { action: "nested-form#add_association" } %>
+  <div data-nested-form-target="add_item" class="">
+    <%= link_to "Add Ingredient", "#",class:"btn btn-success btn-lg col-md-12", data: { action: "nested-form#add_association" } %>
   </div>
 </div>

@@ -7,9 +7,8 @@
         <li class="breadcrumb-item">Create</li>
       </ol>
     </nav> 
+ <div class="row flex-lg-nowrap">
+    <%= render 'form', recipe: @recipe %>
 
-  <%= render 'form', recipe: @recipe %>
-  <div class="container mt-1 col-md-5">
-  <%# <%= link_to 'Back', recipes_path %>
-  </div>
+  </div> 
 </div>

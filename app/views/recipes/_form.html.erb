@@ -1,26 +1,97 @@
-<%= form_with(model: recipe, local: true) do |form| %>
-  <div class="field">
-   <div class="container mt-1 col-md-6">
-        <%= form.label :recipe_category %>
-        <%= form.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false},class:"form-control"%>
-   </div>
+<div class="col">
+  <div class="row" style="background-color:#e9ecefde">
+    <div class="col mb-3">
+      <div class="card-mau">
+        <div class="card-body-mau">   
+          <div class="e-profile">
+            <div class="row">
+              <div class="col-12 col-sm-auto mb-3">
+                <div class="mx-auto" style="width: 420px;">
+                  <div class="d-flex justify-content-center align-items-center" style="height: 400px; background-color: goldenrod">
 
-    <div class="container mt-1 col-md-6">
-        <%= form.label :name %>
-        <%= form.text_field :name , class:"form-control"%>
-    </div>
+                    <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
 
-    <div class="container mt-1 col-md-6">
-        <%= form.label :description %>
-        <%= form.text_area :description, class:"form-control"%>
+                  </div>
+                </div>
+              </div>
+              <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                <div class="text-center text-sm-left mb-2 mb-sm-0">
+                  <div class="text-muted"><small></small></div>
+                  <div class="mt-2">
+                    <button class="btn btn-secondary" type="button">
+                      <span>Upload Photo</span>
+                      <i class="fa fa-fw fa-camera"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul class="nav nav-tabs">
+              <h3> <li class="nav-item"><a href="" class="active nav-link"><b>Recipe</b></a></li></h3>
+            </ul>
+          <%= form_with(model: recipe, local: true) do |form| %>
+          <div class="tab-content pt-3">
+            <div class="tab-pane active">
+              <form class="form" novalidate="">
+                <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <%= form.label :recipe_category %>
+                          <%= form.select :recipe_category_id, RecipeCategory.where(user_id: current_user.id).collect {|r| [r.name, r.id]},  {include_blank: false},class:"form-control"%>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <%= form.label :name %>
+                          <%= form.text_field :name , class:"form-control"%>
+                        </div>
+                      </div>
+                      <div class="row">
+                      </div>
+                      <div class="row">
+                        <div class="col mb-3">
+                          <div class="form-group">
+                            <%= form.label :description %>
+                            <%= form.text_area :description, class:"form-control"%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col d-flex justify-content-start">
+                <%= form.submit 'Create',class:"btn btn-success btn-lg btn-block" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-
-<h1 class="text-center">Ingredients</h1>
-
-  <%= render 'miniform', form: form, name_disabled: false %>
-<div class="actions text-center">
-    <%= form.submit 'Create',class:"btn btn-success btn-lg btn-block" %>
+</div>
+<div class="col-12 col-md-5 mb-3">
+  <div class="card-mau mb-12">
+    <div class="card-body">
+      <div class="px-xl-3">
+        <ul class="nav nav-tabs">
+          <li class="nav-item"><a href="" class="active nav-link"><b>Ingredients</b></a></li>
+        </ul>    
+        <div class="fields">
+          <div data-controller="markup">
+            <h1 class="text-center">Ingredients</h1>
+              <%= render 'miniform', form: form, name_disabled: false %>
+            <div class="actions text-center">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
 <% end %>
