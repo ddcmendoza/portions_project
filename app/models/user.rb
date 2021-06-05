@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :recipes, through: :recipe_categories
   after_create :create_general_category
 
+  validates :encrypted_password, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'Valid emails only!' }
+
   def number_forks
     count = 0
     recipes.each do |recipe|

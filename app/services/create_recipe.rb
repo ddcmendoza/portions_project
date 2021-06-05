@@ -19,9 +19,9 @@ class CreateRecipe
           PostPrice.call(params_for_service)
         end
         i = Ingredient.find_by(ing) || Ingredient.create(ing)
-        r.ingredients << i
-        i_r = IngredientsRecipe.find_entry(r, i)
-        i_r.update(ing_rec_attr)
+        ing_rec_attr.merge(recipe: r, ingredient: i)
+        i_r = IngredientsRecipe.create(ing_rec_attr)
+        return false unless i_r.persisted?
       end
       return true
     end
