@@ -1,5 +1,5 @@
 <div class='nested-fields'>
-  <div style="background-color:#e9ecefde"class='form-group card-mau p-1 m-1 col-md-12' data-controller='fetch-price' data-fetch-price-url-value='<%= fetch_price_path %>'>
+  <div style="background-color:#e9ecefde" class='form-group card-mau p-1 m-1 col-md-12' data-controller='fetch-price' data-fetch-price-url-value='<%= fetch_price_path %>'>
     <%= form.hidden_field :_destroy %>
     <%= form.hidden_field :_post, value: name_disabled ? 0 : 1, data: {fetch_price_target: 'toPost'} %>
     <%= form.label :name %>
@@ -11,9 +11,9 @@
     <%= form.text_field :brand, placeholder: 'Optional', class: 'form-control', data: {fetch_price_target: 'brand'} %>
     <%= form.fields_for :ingredients_recipes_attributes do |f| %>
       <%= f.label :measurement %>
-      <%= f.text_field :measurement, placeholder: 'e.g. grams, pieces,', class: 'form-control', value: ir_attr ? ir_attr.measurement : nil, data: {fetch_price_target: 'measurement'} %>
+      <%= f.text_field :measurement, placeholder: 'e.g. grams, pieces,', class: 'form-control', value: ir_attr ? ir_attr.measurement : nil, required: true, data: {fetch_price_target: 'measurement'} %>
       <%= f.label :measurement_value %>
-      <%= f.number_field :measurement_value, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.measurement_value : nil, data: {fetch_price_target: 'measurementValue'} %>
+      <%= f.number_field :measurement_value, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.measurement_value : nil,  required: true,data: {fetch_price_target: 'measurementValue'} %>
       <%= f.label :price %>
       <div class="d-flex flex-row">
       <%= f.number_field :price, step: 0.1, class: 'form-control', value: ir_attr ? ir_attr.price : nil, data: {fetch_price_target: 'price', action: "change->fetch-price#updatePost", markup_target: 'price'} %>

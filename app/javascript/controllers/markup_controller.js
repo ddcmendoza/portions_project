@@ -9,7 +9,7 @@ export default class extends Controller {
 
 
   initialize() {
-    console.log(this.priceTargets)
+    // console.log(this.priceTargets)
     this.equipmentRate = 0.5
     this.laborRate = 0.5
     this.markupRate = 0.5
@@ -21,7 +21,7 @@ export default class extends Controller {
   }
   query(e){
     e.preventDefault();
-    console.log("CLICKED!")
+    // console.log("CLICKED!")
     this.priceTargets.map(target => console.log(target.value,this.rawPrice));
     if (!isNaN(this.rawPrice)){
       this.buildPriceSheet();
