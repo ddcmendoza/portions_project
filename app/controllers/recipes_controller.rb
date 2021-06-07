@@ -5,12 +5,12 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = CreateRecipe.new(recipe_params)
+    @recipe = CreateRecipe.new(recipe_params) # Change to Form Object later asdlkajd;lkasdj hassle i-handle neto
     if @recipe.save
-      # @recipe_only = CheckPrices.new(Recipe.find_by(@recipe.recipe))
-      redirect_to recipes_path
+      redirect_to recipes_path, notice: 'Successfully created new Recipe'
     else
-      render :new
+      @recipe = Recipe.new
+      render :new, danger: 'Something went wrong.'
     end
   end
 
@@ -23,9 +23,9 @@ class RecipesController < ApplicationController
   def update
     @recipe = UpdateRecipe.new(params[:id])
     if @recipe.update(recipe_params)
-      redirect_to recipes_path
+      redirect_to recipes_path, notice: 'Successfully updated Recipe!'
     else
-      redirect_to recipe_path(params[:id])
+      redirect_to recipe_path(params[:id]), danger: 'Something went wrong.'
     end
   end
 
@@ -33,24 +33,24 @@ class RecipesController < ApplicationController
 
   def destroy
     Recipe.destroy(params[:id])
-    redirect_to recipes_path
+    redirect_to recipes_path, notice: 'Successfully deleted Recipe!'
   end
 
   def recipe_remove_ingredient
     @recipe.ingredients.delete(Ingredient.find(params[:ing_id]))
-    redirect_to recipe_path(params[:id])
+    redirect_to recipe_path(params[:id]), notice: 'Ingredient removed from Recipe!'
   end
 
   def new_dish; end
 
   def fork_recipe
     @new_recipe = CopyRecipe.call(@recipe, current_user)
-    redirect_to recipes_path
+    redirect_to recipes_path, notice: 'Recipe forked!'
   end
 
   def share_recipe
     @recipe.update(public: @recipe.public ? false : true)
-    redirect_to recipes_path
+    redirect_to recipes_path, notice: @recipe.public ? 'Recipe Shared' : 'Recipe set to Private'
   end
 
   def view_recipe; end

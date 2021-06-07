@@ -1,6 +1,5 @@
 class CopyRecipe < ApplicationService
   def initialize(recipe, user)
-    super
     @user = user
     @recipe = recipe
     @ingredients = recipe.ingredients

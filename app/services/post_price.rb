@@ -1,6 +1,5 @@
 class PostPrice < ApplicationService
   def initialize(params)
-    super
     @name = params[:name]
     @brand = params[:brand]
     @measurement = params[:measurement]

@@ -11,8 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = resource
     @user.save
     if @user.persisted?
-      @req_api = RequestApi.new(resource).request
-      @user.update(@req_api)
+      if Rails.env != 'test'
+        @req_api = RequestApi.new(resource).request
+        @user.update(@req_api)
+      end
       # redirect_to :root if @user.confirmed_at.nil?
       if @user.active_for_authentication?
         set_flash_message! :notice, :signed_up
