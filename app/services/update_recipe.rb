@@ -25,7 +25,7 @@ class UpdateRecipe
           i_r = IngredientsRecipe.find_entry(@recipe, i)
           i_r.update(ing_rec_attr)
         else
-          ing_rec_attr.merge!(recipe: r, ingredient: i)
+          ing_rec_attr.merge!(recipe: @recipe, ingredient: i)
           IngredientsRecipe.create(ing_rec_attr)
         end
       end

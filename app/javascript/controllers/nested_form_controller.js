@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["add_item", "template"];
+  static targets = ["add_item", "template","required"];
 
   add_association(event) {
     event.preventDefault();
@@ -19,6 +19,9 @@ export default class extends Controller {
       let item = event.target.closest(".nested-fields");
       item.querySelector("input[name*='_destroy']").value = 1;
       item.style.display = "none";
+      item.querySelector("input[name*='measurement']").required = false;
+      item.querySelector("input[name*='measurement_value']").required = false;
     }
   }
+
 }
