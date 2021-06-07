@@ -7,6 +7,7 @@ class CreateRecipe
   end
 
   def save
+    status = true
     ActiveRecord::Base.transaction do
       r = Recipe.create(@recipe)
       @ingredients.each do |ingredient|
@@ -19,12 +20,11 @@ class CreateRecipe
           PostPrice.call(params_for_service)
         end
         i = Ingredient.find_by(ing) || Ingredient.create(ing)
-        ing_rec_attr.merge(recipe: r, ingredient: i)
+        ing_rec_attr.merge!(recipe: r, ingredient: i)
         i_r = IngredientsRecipe.create(ing_rec_attr)
-        return false unless i_r.persisted?
+        status = false unless i_r.persisted?
       end
-      return true
     end
-    false
+    status
   end
 end

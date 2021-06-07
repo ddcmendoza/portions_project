@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
       redirect_to recipes_path, notice: 'Successfully created new Recipe'
     else
       @recipe = Recipe.new
-      render :new, danger: 'Something went wrong.'
+      render :new, notice: 'Something went wrong.'
     end
   end
 

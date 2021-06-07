@@ -21,10 +21,12 @@ class UpdateRecipe
         i = i_tmp
         if to_destroy
           @recipe.ingredients.delete(i)
-        else
-          @recipe.ingredients << i unless IngredientsRecipe.exists?(recipe_id: @recipe.id, ingredient_id: i.id)
+        elsif IngredientsRecipe.exists?(recipe_id: @recipe.id, ingredient_id: i.id)
           i_r = IngredientsRecipe.find_entry(@recipe, i)
           i_r.update(ing_rec_attr)
+        else
+          ing_rec_attr.merge!(recipe: r, ingredient: i)
+          IngredientsRecipe.create(ing_rec_attr)
         end
       end
       return true
