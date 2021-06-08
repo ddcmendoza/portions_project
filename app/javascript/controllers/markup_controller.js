@@ -21,7 +21,7 @@ export default class extends Controller {
   query(e){
     e.preventDefault();
     // console.log("CLICKED!")
-    this.priceTargets.map(target => console.log(target.value,this.rawPrice));
+    // this.priceTargets.map(target => console.log(target.value,this.rawPrice));
     if (!isNaN(this.rawPrice)){
       this.buildPriceSheet();
     }
