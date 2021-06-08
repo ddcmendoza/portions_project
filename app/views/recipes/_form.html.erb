@@ -1,6 +1,7 @@
   <%= form_with(model: recipe, local: true) do |form| %>
   <div class="d-flex flex-row">
-    <div class="col-6 col-md-5 mb-3" style="background-color:#e9ecefde">
+    <div class="col">
+    <div class="row" style="background-color:#e9ecefde">
       <div class="col mb-3">
         <div class="card-mau">
           <div class="card-body-mau">
@@ -74,19 +75,18 @@
           </div>
         </div>
       </div>
-    <div class="col-6 col-md-7 mb-9">
-      <div class="card-mau mb-12">
-        <div class="card-body">
-          <div class="px-xl-3">
-            <ul class="nav nav-tabs">
-              <li class="nav-item"><a href="" class="active nav-link"><b>Ingredients</b></a></li>
-            </ul>
-            <div class="fields">
-              <div data-controller="markup">
-                <h1 class="text-center">Ingredients</h1>
-                <%= render 'miniform', form: form, name_disabled: false %>
-                <div class="actions text-center">
-                </div>
+  </div>
+  <div class="col-12 col-md-5 mb-3">
+    <div class="card-mau mb-12">
+      <div class="card-body">
+        <div class="px-xl-3">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"><a href="" class="active nav-link"><b>Ingredients</b></a></li>
+          </ul>
+          <div class="fields">
+            <div data-controller="markup">
+              <%= render 'miniform', form: form, name_disabled: false %>
+              <div class="actions text-center">
               </div>
             </div>
           </div>
