@@ -1,6 +1,7 @@
-import { Controller } from "stimulus";
+import { Controller  } from "stimulus";
 
 export default class extends Controller {
+  static classes = [ "test" ]
   static targets = [
     "price",
     "container",
@@ -36,7 +37,10 @@ export default class extends Controller {
     let equipment = document.createElement('div');
     let labor = document.createElement('div');
     let total = document.createElement('div');
-    rawMat.innerHTML = `Total Ingredient price: ${this.rawPrice}`;
+
+    rawMat.className = "close";
+    
+    rawMat.innerHTML = `Total Ingredient price: ${this.rawMat}`;
     equipment.innerHTML = `Estimated Equipment price(@ ${this.equipmentRate*100}% equipment rate): ${this.equipmentPrice}`;
     labor.innerHTML = `Estimated Labor price (@ ${this.laborRate*100}% labor rate): ${this.laborPrice}`;
     total.innerHTML = `Suggested Price per serving (@ ${this.markupRate*100}% markup rate): <b>${this.suggestedPrice}</b>`;
