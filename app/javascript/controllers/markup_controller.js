@@ -22,7 +22,7 @@ export default class extends Controller {
   query(e){
     e.preventDefault();
     // console.log("CLICKED!")
-    this.priceTargets.map(target => console.log(target.value,this.rawPrice));
+    // this.priceTargets.map(target => console.log(target.value,this.rawPrice));
     if (!isNaN(this.rawPrice)){
       this.buildPriceSheet();
     }
@@ -40,7 +40,7 @@ export default class extends Controller {
 
     rawMat.className = "close";
     
-    rawMat.innerHTML = `Total Ingredient price: ${this.rawMat}`;
+    rawMat.innerHTML = `Total Ingredient price: ${this.rawPrice}`;
     equipment.innerHTML = `Estimated Equipment price(@ ${this.equipmentRate*100}% equipment rate): ${this.equipmentPrice}`;
     labor.innerHTML = `Estimated Labor price (@ ${this.laborRate*100}% labor rate): ${this.laborPrice}`;
     total.innerHTML = `Suggested Price per serving (@ ${this.markupRate*100}% markup rate): <b>${this.suggestedPrice}</b>`;
