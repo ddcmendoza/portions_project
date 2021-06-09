@@ -33,7 +33,7 @@
               <td> <%= ingredient.brand%> </td>
               <td> <%= ing_attr.measurement_value%> <%= ing_attr.measurement%> </td>
               <td> <%= number_to_currency ing_attr.price, unit: "Php" %> </td>
-              <% total += ing_attr.price%>
+              <%  total += ing_attr.price if ing_attr.price%>
             </tr>
           <% end %>
           <tr class="table-info">
