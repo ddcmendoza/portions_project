@@ -84,10 +84,7 @@ export default class extends Controller {
   //   }
   // }
   notifyToFillPrice(){
-    this.clearContainerTarget();
-    let notify = document.createElement('div');
-    notify.innerHTML = 'There are ingredients with no price! Update price/s first to use this feature!';
-
-    this.containerTarget.appendChild(notify);
+    // this.clearContainerTarget();
+    alert('There are ingredients with no price! Update price/s first to use this feature!');
   }
 }
