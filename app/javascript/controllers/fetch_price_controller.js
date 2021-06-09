@@ -29,8 +29,8 @@ export default class extends Controller {
         return response.json();
       })
       .then((data) => {
-        this.changePrice(data.ingredient.price);
-        // console.log(data);
+        console.log(data);
+        this.changePrice(data);
       })
       .catch((e) => console.log(e));
   }
@@ -39,14 +39,24 @@ export default class extends Controller {
     // console.log("UPDATING POST!", this.toPostTarget.value);
   }
 
-  changePrice(price) {
-    if (price === null) {
+  changePrice(data) {
+    if (data.ingredient.price === null) {
       this.notifyUser();
-    } else {
-      this.priceTarget.value = parseInt(price);
+      return;
+    } 
+    if(this.matchParams(data)) {
+      let multiplier = parseFloat(this.measurementValueTarget.value)/parseFloat(data.ingredient.measurement_value);
+      this.priceTarget.value = parseFloat(data.ingredient.price) * multiplier;
       this.toPostTarget.value = 0;
-      // console.log(price);
+      return;
     }
+    this.notifyUser();
+  }
+
+  matchParams(data){
+    let brand = data.ingredient.brand == null ? "" : data.ingredient.brand
+    console.log(brand, this.brandTarget.value)
+    return brand == this.brandTarget.value.toLowerCase() && data.ingredient.measurement == this.measurementTarget.value.toLowerCase();
   }
 
   notifyUser() {
