@@ -5,11 +5,20 @@ export default class extends Controller {
   static targets = [
     "price",
     "container",
+    "rawmat",
+    "equipment",
+    "labor",
+    "total",
+    "laborRate",
+    "equipmentRate",
+    "markupRate",
   ];
 
 
   initialize() {
     // console.log(this.priceTargets)
+    this.containerTarget.style.display = "none";
+    console.log(this.containerTarget)
     this.equipmentRate = 0.5
     this.laborRate = 0.5
     this.markupRate = 0.5
@@ -32,41 +41,50 @@ export default class extends Controller {
   }
 
   buildPriceSheet(){
-    this.clearContainerTarget();
-    let rawMat = document.createElement('div');
-    let equipment = document.createElement('div');
-    let labor = document.createElement('div');
-    let total = document.createElement('div');
+    this.containerTarget.style.display = 'block';
+    // let rawMat = document.createElement('div');
+    // let equipment = document.createElement('div');
+    // let labor = document.createElement('div');
+    // let total = document.createElement('div');
 
-    rawMat.className = "close";
+    // rawMat.className = "close";
     
-    rawMat.innerHTML = `Total Ingredient price: ${this.rawPrice}`;
-    equipment.innerHTML = `Estimated Equipment price(@ ${this.equipmentRate*100}% equipment rate): ${this.equipmentPrice}`;
-    labor.innerHTML = `Estimated Labor price (@ ${this.laborRate*100}% labor rate): ${this.laborPrice}`;
-    total.innerHTML = `Suggested Price per serving (@ ${this.markupRate*100}% markup rate): <b>${this.suggestedPrice}</b>`;
+    this.rawmatTarget.innerHTML = `Php ${this.rawPrice.toFixed(2)}`;
+    this.equipmentTarget.innerHTML = `Php ${this.equipmentPrice.toFixed(2)}`//`Estimated Equipment price(@ ${this.equipmentRate*100}% equipment rate): ${this.equipmentPrice}`;
+    this.laborTarget.innerHTML = `Php ${this.laborPrice.toFixed(2)}`//`Estimated Labor price (@ ${this.laborRate*100}% labor rate): ${this.laborPrice}`;
+    this.totalTarget.innerHTML = `<b>Php ${this.suggestedPrice.toFixed(2)}</b>`//`Suggested Price per serving (@ ${this.markupRate*100}% markup rate): <b>${this.suggestedPrice}</b>`;
     
-    this.containerTarget.appendChild(rawMat);
-    this.containerTarget.appendChild(equipment);
-    this.containerTarget.appendChild(labor);
-    this.containerTarget.appendChild(total);
+    // this.containerTarget.appendChild(rawMat);
+    // this.containerTarget.appendChild(equipment);
+    // this.containerTarget.appendChild(labor);
+    // this.containerTarget.appendChild(total);
   }
-
+  updateLabor(){
+    this.laborRate = parseFloat(this.laborRateTarget.value)/100;
+    this.recalculatePrices();
+  }
+  updateEquipment(){
+    this.equipmentRate = parseFloat(this.equipmentRateTarget.value)/100;
+    this.recalculatePrices();
+  }
+  updateMarkUp(){
+    this.markupRate = parseFloat(this.markupRateTarget.value)/100;
+    this.recalculatePrices();
+  }
   recalculatePrices(){
-    this.equipmentPrice = this.rawPrice * 0.5;
-    this.laborPrice = (this.rawPrice + this.equipmentPrice) * 0.5;
-    this.suggestedPrice = (this.rawPrice + this.equipmentPrice + this.laborPrice) * 1.5;
+    this.equipmentPrice = this.rawPrice * this.equipmentRate;
+    this.laborPrice = (this.rawPrice + this.equipmentPrice) * this.laborRate;
+    this.suggestedPrice = (this.rawPrice + this.equipmentPrice + this.laborPrice) * (1+ this.markupRate);
+    this.buildPriceSheet();
   }
 
-  clearContainerTarget(){
-    while(this.containerTarget.firstChild){
-      this.containerTarget.removeChild(this.containerTarget.firstChild);
-    }
-  }
+  // clearContainerTarget(){
+  //   while(this.containerTarget.firstChild){
+  //     this.containerTarget.removeChild(this.containerTarget.firstChild);
+  //   }
+  // }
   notifyToFillPrice(){
-    this.clearContainerTarget();
-    let notify = document.createElement('div');
-    notify.innerHTML = 'There are ingredients with no price! Update price/s first to use this feature!';
-
-    this.containerTarget.appendChild(notify);
+    // this.clearContainerTarget();
+    alert('There are ingredients with no price! Update price/s first to use this feature!');
   }
 }

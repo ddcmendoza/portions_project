@@ -106,7 +106,29 @@
                       How much can I sell this dish for?
                       <i class="fa fa-money" aria-hidden="true"></i>
                     </button>
-                    <div data-markup-target="container" >
+                    <div data-markup-target="container" class="mt-2">
+                    <table class="table">
+                    <tr>
+                      <th>Line Item</th>
+                      <th>Amount</th>
+                    </tr>
+                    <tr>
+                      <td>Raw Materials</td>
+                      <td data-markup-target="rawmat"></td>
+                    </tr>
+                    <tr>
+                      <td>Equipment @ <input type='number' style="width: 2.5em" unit="0.5" value="50" data-action="change->markup#updateEquipment" data-markup-target="equipmentRate" min="10"> %</td>
+                      <td data-markup-target="equipment"></td>
+                    </tr>
+                    <tr>
+                      <td>Labor @ <input type='number' style="width: 2.5em" unit="0.5" value="50" data-action="change->markup#updateLabor" data-markup-target="laborRate" min="10"> %</td>
+                      <td data-markup-target="labor"></td>
+                    </tr>
+                    <tr>
+                      <td>Suggested Price per serving <p>markup @ <input type='number' style="width: 3.5em" unit="0.5" value="50" data-action="change->markup#updateMarkUp" data-markup-target="markupRate" min="10"> %</p></td>
+                      <td data-markup-target="total"></td>
+                    </tr>
+                    <table>
                     </div>
                   </div>
                 </div>
