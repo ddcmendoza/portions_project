@@ -22,7 +22,7 @@
 
       <% flash.each do |name, msg, msg_error| %>
         <% if msg == "Signed in successfully." || "Signed out successfully." %>
-          <div class="alert alert-primary" role="alert" style="position:absolute; left:600px;top:150px;width:24rem">
+          <div class="alert alert-primary text-center" role="alert" style="position:absolute; left:40vw;top:10vh;width:20vw;z-index: 1000;">
             <span class=""><%= msg %></span>
           </div>
         <% end %>
